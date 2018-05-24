@@ -68,6 +68,14 @@ describe('Formats', function () {
       this.validator.validate("16:41:41", {'type': 'string', 'format': 'time'}).valid.should.be.true;
     });
 
+    it('should validate a valid UTC time (Z)', function () {
+      this.validator.validate("16:41:41Z", { 'type': 'string', 'format': 'time' }).valid.should.be.true;
+    });
+
+    it('should validate a valid time UTC time (z)', function () {
+      this.validator.validate("16:41:41z", { 'type': 'string', 'format': 'time' }).valid.should.be.true;
+    });
+
     it('should not validate an invalid time', function () {
       this.validator.validate("16:41:41.532Z", {'type': 'string', 'format': 'time'}).valid.should.be.false;
     });
